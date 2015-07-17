@@ -1,10 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"log"
 	"net/http"
 	"os"
-	"bytes"
 	"strconv"
 
 	"github.com/heroku/go-getting-started/Godeps/_workspace/src/github.com/gin-gonic/gin"
@@ -12,17 +12,16 @@ import (
 )
 
 var (
-    repeat int
+	repeat int
 )
 
-func repeatFunc(c *gin.Context) {
+func repeatHandler(c *gin.Context) {
 	var buffer bytes.Buffer
 	for i := 0; i < repeat; i++ {
-        buffer.WriteString("Hello from Go!")
-  }
+		buffer.WriteString("Hello from Go!")
+	}
 	c.String(http.StatusOK, buffer.String())
 }
-
 
 func main() {
 	var err error
@@ -32,12 +31,12 @@ func main() {
 		log.Fatal("$PORT must be set")
 	}
 
-  tStr := os.Getenv("REPEAT")
-  repeat, err = strconv.Atoi(tStr)
-  if err != nil {
-    log.Print("Error converting $REPEAT to an int: %q - Using default", err)
+	tStr := os.Getenv("REPEAT")
+	repeat, err = strconv.Atoi(tStr)
+	if err != nil {
+		log.Printf("Error converting $REPEAT to an int: %q - Using default\n", err)
 		repeat = 5
-  }
+	}
 
 	router := gin.New()
 	router.Use(gin.Logger())
@@ -52,7 +51,7 @@ func main() {
 		c.String(http.StatusOK, string(blackfriday.MarkdownBasic([]byte("**hi!**"))))
 	})
 
-	router.GET("/repeat", repeatFunc)
+	router.GET("/repeat", repeatHandler)
 
 	router.Run(":" + port)
 }

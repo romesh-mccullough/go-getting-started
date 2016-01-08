@@ -7,13 +7,7 @@
     "sample",
     "example"
   ],
-  "env": {
-    "GO15VENDOREXPERIMENT": {
-      "description": "Enable vendor/ directory support",
-      "value": "1"
-    }
-  },
-  "image": "heroku/go:1.5",
+  "image": "heroku/go:1.6",
   "mount_dir": "src/github.com/heroku/go-getting-started",
   "website": "http://github.com/heroku/go-getting-started",
   "repository": "http://github.com/heroku/go-getting-started"

@@ -7,8 +7,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/heroku/go-getting-started/Godeps/_workspace/src/github.com/gin-gonic/gin"
-	"github.com/heroku/go-getting-started/Godeps/_workspace/src/github.com/russross/blackfriday"
+	"github.com/gin-gonic/gin"
+	"github.com/russross/blackfriday"
 )
 
 var (

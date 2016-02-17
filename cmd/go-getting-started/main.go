@@ -2,17 +2,17 @@ package main
 
 import (
 	"bytes"
+	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
-	"database/sql"
 
-	"github.com/heroku/go-getting-started/Godeps/_workspace/src/github.com/gin-gonic/gin"
-	_ "github.com/heroku/go-getting-started/Godeps/_workspace/src/github.com/lib/pq"
-	"github.com/heroku/go-getting-started/Godeps/_workspace/src/github.com/russross/blackfriday"
+	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
+	"github.com/russross/blackfriday"
 )
 
 var (
@@ -52,8 +52,8 @@ func dbFunc(c *gin.Context) {
 	for rows.Next() {
 		var tick time.Time
 		if err := rows.Scan(&tick); err != nil {
-		  c.String(http.StatusInternalServerError,
-		  	fmt.Sprintf("Error scanning ticks: %q", err))
+			c.String(http.StatusInternalServerError,
+				fmt.Sprintf("Error scanning ticks: %q", err))
 			return
 		}
 		c.String(http.StatusOK, fmt.Sprintf("Read from DB: %s\n", tick.String()))

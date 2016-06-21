@@ -24,13 +24,13 @@ func repeatHandler(c *gin.Context) {
 }
 
 func main() {
-	var err error
 	port := os.Getenv("PORT")
 
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
 
+	var err error
 	tStr := os.Getenv("REPEAT")
 	repeat, err = strconv.Atoi(tStr)
 	if err != nil {

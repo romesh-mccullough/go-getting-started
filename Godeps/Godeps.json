@@ -1,12 +1,20 @@
 {
 	"ImportPath": "github.com/heroku/go-getting-started",
 	"GoVersion": "go1.6",
-	"Packages": [
-		"./cmd/..."
-	],
+	"GodepVersion": "v74",
 	"Deps": [
 		{
 			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.0rc1-110-g4cc2de6",
+			"Rev": "4cc2de6207f4128624cbdd16be30f64966c67c08"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/binding",
+			"Comment": "v1.0rc1-110-g4cc2de6",
+			"Rev": "4cc2de6207f4128624cbdd16be30f64966c67c08"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/render",
 			"Comment": "v1.0rc1-110-g4cc2de6",
 			"Rev": "4cc2de6207f4128624cbdd16be30f64966c67c08"
 		},
@@ -24,8 +32,8 @@
 		},
 		{
 			"ImportPath": "github.com/russross/blackfriday",
-			"Comment": "v1.4-21-g006144a",
-			"Rev": "006144af03eeeff1037240a71865a9fd61f1c25f"
+			"Comment": "v1.4-33-g1d6b8e9",
+			"Rev": "1d6b8e9301e720b08a8938b8c25c018285885438"
 		},
 		{
 			"ImportPath": "github.com/shurcooL/sanitized_anchor_name",

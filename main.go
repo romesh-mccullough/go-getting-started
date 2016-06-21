@@ -17,7 +17,7 @@ import (
 
 var (
 	repeat int
-	db     *sql.DB = nil
+	db     *sql.DB
 )
 
 func repeatFunc(c *gin.Context) {
@@ -61,14 +61,13 @@ func dbFunc(c *gin.Context) {
 }
 
 func main() {
-	var err error
-	var errd error
 	port := os.Getenv("PORT")
 
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
 
+	var err error
 	tStr := os.Getenv("REPEAT")
 	repeat, err = strconv.Atoi(tStr)
 	if err != nil {
@@ -76,9 +75,9 @@ func main() {
 		repeat = 5
 	}
 
-	db, errd = sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	if errd != nil {
-		log.Fatalf("Error opening database: %q", errd)
+	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	if err != nil {
+		log.Fatalf("Error opening database: %q", err)
 	}
 
 	router := gin.New()
